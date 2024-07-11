@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { dark, neobrutalism } from "@clerk/themes";
 import "./globals.css";
-
+import { ClerkProvider, GoogleOneTap } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -16,7 +17,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <ClerkProvider
+        appearance={{
+          baseTheme: dark,
+          signIn: { baseTheme: neobrutalism },
+        }}
+      >
+        <GoogleOneTap />
+        <body className={inter.className}>{children}</body>
+      </ClerkProvider>
     </html>
   );
 }
