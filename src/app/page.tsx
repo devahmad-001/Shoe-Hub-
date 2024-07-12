@@ -1,9 +1,11 @@
-import { SignInButton } from "@clerk/nextjs";
+"use client";
 
-export default async function Home() {
+import SignUp from "@/components/SignUp";
+
+export default function Home() {
   return (
     <>
-      <SignInButton />
+      <SignUp />
     </>
   );
 }
