@@ -2,17 +2,17 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export default function SignUp() {
+export default function SignUp({ params }: any) {
   let { register, handleSubmit } = useForm();
-
   const userData = async (data: any) => {
-    const sendData = await fetch("/api", {
-      method: "POST",
+    console.log("data", data);
+    const sendData = await fetch(`/api/user/update/${params.id}`, {
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-    const response = await sendData.json();
-    console.log(response);
+    const res = await sendData.json();
+    console.log("res", res);
   };
 
   return (

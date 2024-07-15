@@ -1,6 +1,6 @@
 "use client";
 
-import SignUp from "@/components/SignUp";
+import SignUp from "@/components/CreateUser";
 
 export default function Home() {
   return (

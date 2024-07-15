@@ -11,7 +11,9 @@
   "dependencies": {
     "@clerk/nextjs": "^5.2.2",
     "@clerk/themes": "^2.1.10",
+    "bootstrap": "^5.3.3",
     "firebase": "^10.12.3",
+    "jquery": "^3.7.1",
     "mongoose": "^8.5.0",
     "next": "14.2.5",
     "react": "^18",
