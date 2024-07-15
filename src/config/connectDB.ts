@@ -1,6 +1,6 @@
 // this code is used for connect DB with server
-// if db is connected to server then use return before query means don't connect
-// and  if db is not connected then connect and use query
+// if db is connected to server then use return before query means no need to connect
+// and  if db is not connected then connect and define query
 
 import mongoose from "mongoose";
 
@@ -23,10 +23,23 @@ const connectDB = async () => {
         console.error(`MongoDb connection error: ${err}`);
       });
     });
-  } catch (error:any) {
+  } catch (error: any) {
     console.error(`Error connecting to MongoDB: ${error}`);
     // process.exit(1); // exit process with error
   }
 };
 
 export default connectDB;
+
+// import mongoose from "mongoose";
+
+// const connection = {}
+
+// async function dbConnect() {
+//   if(connection.isConnected){
+//     return ;
+//   }
+//   const db=await mongoose.connect(process.env.MONGODB_URL!)
+//   console.log("db",db);
+//   connection.isConnected=db.connections[0].
+// }

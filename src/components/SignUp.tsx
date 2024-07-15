@@ -6,20 +6,13 @@ export default function SignUp() {
   let { register, handleSubmit } = useForm();
 
   const userData = async (data: any) => {
-    // const sendData = await fetch("/api", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(data),
-    // });
-    // const response = await sendData.json();
-    // console.log(response);
-     
-    const sendData = await fetch ('/api',{
-        method:"POST",
-        headers :{"Content-Type":"application/json"},
-        body:JSON.stringify(data)
-    })
-    const res=await sendData.json();
+    const sendData = await fetch("/api", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const response = await sendData.json();
+    console.log(response);
   };
 
   return (
