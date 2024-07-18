@@ -5,7 +5,7 @@ connectDB();
 
 export const POST = async (req: any) => {
   const request = await req.json();
-  const findUser = await UserModel.findOne({ email: request.email });
+  const findUser = await UserModel.findOne({ email: request.email ,password:request.password });
   console.log(findUser);
   if (findUser) {
     return NextResponse.json({ message: "User Exist", status: "ok" ,user:findUser});

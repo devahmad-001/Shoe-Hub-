@@ -2,29 +2,27 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 
-export default function SignUp({ params }: any) {
+export default function Reset({ params }: any) {
   let { register, handleSubmit } = useForm();
   const userData = async (data: any) => {
-    console.log("data", data);
-    const sendData = await fetch(`/api/user/update/${params.id}`, {
-      method: "PATCH",
+    const resetPassword = await fetch("/api/reset-password", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
+      // credentials: "include", // include cookies in the request
     });
-    const res = await sendData.json();
-    console.log("res", res.status);
-    if(res.status=='ok'){
-      window.location.href = "/getData";
-    }
+    const res = await resetPassword.json();
+    console.log(res);
   };
 
   return (
     <>
+      <h1>Reset Password </h1>
       <form onSubmit={handleSubmit(userData)}>
         <label>
-          <span>Enter new password</span>{" "}
+          <span>Enter email address</span>{" "}
         </label>
-        <input placeholder="password" {...register("password")} />
+        <input placeholder="email" {...register("email")} />
         <button>Click Here </button>
       </form>
     </>

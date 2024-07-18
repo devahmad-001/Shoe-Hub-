@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-export default function Page() {
+export default function ShowUsers() {
   const [profiles, setprofiles] = useState<any[]>([]);
   const [update, setUpdate] = useState(false);
   const fetchData = async () => {
@@ -28,12 +28,11 @@ export default function Page() {
     if (update) {
       fetchData();
     }
-    
   }, [update]);
 
   const deleteUser = async (id: any) => {
     console.log(id);
-    const response = await fetch(`/api/user/delete/${id}`, {
+    const response = await fetch(`/api/admin/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +64,7 @@ export default function Page() {
               <td data-label="Age">{user.email}</td>
               <td data-label="Age">{user.password}</td>
               <td data-label="Marks%">
-                <Link href={"/updateData/" + user._id}>update</Link>
+                <Link href={"/admin-panel/updateData/" + user._id}>update</Link>
               </td>
               <td
                 data-label="Staus"

@@ -1,11 +1,13 @@
 "use client";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 export default function Login() {
+  // for carete cookie 
   const setCookie = (cName: string, cValue: any, exDays: any) => {
     const d = new Date();
     d.setTime(d.getTime() + exDays * 24 * 60 * 60 * 1000);
     const expires = "expires=" + d.toUTCString();
-    document.cookie = cName + "=" + cValue + ";" + expires + ";path=/";
+    document.cookie = cName + "=" + cValue + ";" + expires + ";path=/order";
   };
   let { register, handleSubmit } = useForm();
   const userData = async (data: any) => {
@@ -19,10 +21,11 @@ export default function Login() {
       console.log(res);
       if (res.status == "ok") {
         setCookie('shoehubUser',res.user._id,7);
-        window.location.href = "/getData";
+        window.location.href = "/order";
       }
     } catch (error) {
       console.log("error Login user", error);
+      alert("User not found");
     }
   };
   return (
@@ -38,6 +41,7 @@ export default function Login() {
           <input placeholder="Enter password" {...register("password")} />
         </label>
         <button>Click Here </button>
+      <Link href={'/user/resetpassword'}>forgotPassword</Link>
       </form>
     </>
   );

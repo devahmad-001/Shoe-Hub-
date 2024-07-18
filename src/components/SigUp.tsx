@@ -15,7 +15,7 @@ export default function SignUp() {
     console.log("res", res);
     if (res.status == "ok") {
       alert("User Created Successfully");
-      window.location.href = "/getData";
+      window.location.href = "/admin-panel";
     } else {
       alert(`${res.message}`);
     }
