@@ -3,9 +3,10 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 export default function Page() {
   const [profiles, setprofiles] = useState<any[]>([]);
+  const [update, setUpdate] = useState(false);
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/user/read", {
+      const response = await fetch("/api/user/get-all-users", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -23,20 +24,24 @@ export default function Page() {
     fetchData();
   }, []);
 
-  const deleteUser = async (id: any) => {
-console.log(id);
+  useEffect(() => {
+    if (update) {
+      fetchData();
+    }
+    
+  }, [update]);
 
+  const deleteUser = async (id: any) => {
+    console.log(id);
     const response = await fetch(`/api/user/delete/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      console.log("data", data);
-      if (data.success) {
-         setprofiles([...profiles])
-      }
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log("data", data);
+    setUpdate(!update);
   };
 
   return (
@@ -47,6 +52,7 @@ console.log(id);
             <th>User</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Password</th>
             <th>Update</th>
             <th>Delete</th>
           </tr>
@@ -57,9 +63,10 @@ console.log(id);
               <td data-label="S.No">{index + 1}</td>
               <td data-label="Name">{user.name}</td>
               <td data-label="Age">{user.email}</td>
-              <Link href={"/updateData/" + user._id}>
-                <td data-label="Marks%">update</td>
-              </Link>
+              <td data-label="Age">{user.password}</td>
+              <td data-label="Marks%">
+                <Link href={"/updateData/" + user._id}>update</Link>
+              </td>
               <td
                 data-label="Staus"
                 onClick={() => {

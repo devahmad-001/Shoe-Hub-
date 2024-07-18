@@ -12,21 +12,19 @@ export default function SignUp({ params }: any) {
       body: JSON.stringify(data),
     });
     const res = await sendData.json();
-    console.log("res", res);
+    console.log("res", res.status);
+    if(res.status=='ok'){
+      window.location.href = "/getData";
+    }
   };
 
   return (
     <>
       <form onSubmit={handleSubmit(userData)}>
         <label>
-          <span>Name</span>
+          <span>Enter new password</span>{" "}
         </label>
-        <input placeholder="Enter name" {...register("name")} />
-
-        <label>
-          <span>Email</span>{" "}
-        </label>
-        <input placeholder="Enter mail" {...register("email")} />
+        <input placeholder="password" {...register("password")} />
         <button>Click Here </button>
       </form>
     </>

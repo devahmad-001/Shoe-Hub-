@@ -12,11 +12,14 @@ export const POST = async (req: any) => {
     console.log(senduser);
     return NextResponse.json({
       message: "user created successfully",
-      user: request,
+      user: {
+        name: senduser._doc.name,
+        email: senduser._doc.email,
+        password: senduser._doc.password,
+      },
+      status:'ok'
     });
   } catch (error) {
     return NextResponse.json({ message: "err in the post req", err: error });
   }
 };
-
-

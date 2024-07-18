@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 connectDB();
 
-export const GET = async (req: any) => {
+export const GET = async () => {
   try {
     const getdata: any = await UserModel.find();
     console.log(getdata);

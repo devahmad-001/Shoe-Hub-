@@ -13,19 +13,32 @@ export default function SignUp() {
     });
     const res = await sendData.json();
     console.log("res", res);
+    if (res.status == "ok") {
+      alert("User Created Successfully");
+      window.location.href = "/getData";
+    } else {
+      alert(`${res.message}`);
+    }
   };
   return (
     <>
+    <h1>SigUp in our account </h1>
+
       <form onSubmit={handleSubmit(userData)}>
         <label>
           <span>Name</span>
+          <input placeholder="Enter name" {...register("name")} />
         </label>
-        <input placeholder="Enter name" {...register("name")} />
 
         <label>
           <span>Email</span>{" "}
+          <input placeholder="Enter mail" {...register("email")} />
         </label>
-        <input placeholder="Enter mail" {...register("email")} />
+        <label>
+          <span>Password</span>
+          <input placeholder="Enter password" {...register("password")} />
+        </label>
+
         <button>Click Here </button>
       </form>
     </>
