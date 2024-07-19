@@ -6,7 +6,7 @@ export default function ShowUsers() {
   const [update, setUpdate] = useState(false);
   const fetchData = async () => {
     try {
-      const response = await fetch("/api/user/get-all-users", {
+      const response = await fetch("/api/admin/get-all-users", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

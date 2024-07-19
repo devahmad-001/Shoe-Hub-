@@ -11,6 +11,8 @@
   "dependencies": {
     "@clerk/nextjs": "^5.2.2",
     "@clerk/themes": "^2.1.10",
+    "@emailjs/browser": "^4.4.1",
+    "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "firebase": "^10.12.3",

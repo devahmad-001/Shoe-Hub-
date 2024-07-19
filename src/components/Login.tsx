@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 export default function Login() {
-  // for carete cookie 
+  // for create cookie
   const setCookie = (cName: string, cValue: any, exDays: any) => {
     const d = new Date();
     d.setTime(d.getTime() + exDays * 24 * 60 * 60 * 1000);
@@ -12,20 +12,22 @@ export default function Login() {
   let { register, handleSubmit } = useForm();
   const userData = async (data: any) => {
     try {
-      const findUser = await fetch("/api/user/findUser", {
+      const findUser = await fetch("/api/user/findUserLogin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
       const res = await findUser.json();
       console.log(res);
-      if (res.status == "ok") {
-        setCookie('shoehubUser',res.user._id,7);
+      if (res.status === 200) {
+        setCookie("shoehubUser", res.user._id, 7);
+        alert("User found");
         window.location.href = "/order";
+      } else if (res.status === 404) {
+        alert("User not found");
       }
     } catch (error) {
-      console.log("error Login user", error);
-      alert("User not found");
+      console.log("error findUserLogin:", error);
     }
   };
   return (
@@ -41,7 +43,7 @@ export default function Login() {
           <input placeholder="Enter password" {...register("password")} />
         </label>
         <button>Click Here </button>
-      <Link href={'/user/resetpassword'}>forgotPassword</Link>
+        <Link href={"/user/send-email"}>forgotPassword</Link>
       </form>
     </>
   );

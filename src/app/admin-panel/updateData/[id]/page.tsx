@@ -13,21 +13,24 @@ export default function Update({ params }: any) {
     });
     const res = await sendData.json();
     console.log("res", res.status);
-    if(res.status=='ok'){
+    if(res.status==200){
+      alert("Update Successful");
       window.location.href = "/admin-panel";
+    }else{
+      alert("Update Failure");
     }
   };
 
   return (
     <>
-    <h1>Enter new password </h1>
+    <h1>Admin update your info </h1>
        <form onSubmit={handleSubmit(userData)}>
         <label>
-          <span>password</span>{" "}
+          <span>Password</span>{" "}
         </label>
         <input placeholder="password" {...register("password")} />
         <label>
-          <span>password</span>{" "}
+          <span> Email</span>{" "}
         </label>
         <input placeholder="email" {...register("email")} />
 

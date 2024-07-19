@@ -17,8 +17,8 @@ export const PATCH = async (req: any, route: any) => {
       }
     );
     console.log(updateuser);
-    return NextResponse.json({ message: "success Update User", status: "ok" });
+    return NextResponse.json({ message: "success Update User", status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "err in the PUT req", err: error });
+    return NextResponse.json({ message: "can't update", err: error });
   }
 };

@@ -13,10 +13,10 @@ export default function SignUp() {
     });
     const res = await sendData.json();
     console.log("res", res);
-    if (res.status == "ok") {
+    if (res.status === 201) {
       alert("User Created Successfully");
       window.location.href = "/admin-panel";
-    } else {
+    } else if (res.status === 400){
       alert(`${res.message}`);
     }
   };

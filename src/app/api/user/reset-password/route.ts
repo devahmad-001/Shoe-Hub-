@@ -1,18 +1,26 @@
 import connectDB from "@/config/connectDB";
 import { UserModel } from "@/models/userModel";
 import { NextResponse } from "next/server";
-require('dotenv').config()
-export const POST = async (req: any) => {
+export const PATCH = async (req: any, route: any) => {
   await connectDB();
   const request = await req.json();
-  console.log(request);
+  console.log(request.name, request.email, request.password);
+  const id = route.params.id;
+  console.log(request,id);
+  
   try {
-    const senduser = await UserModel.findOne({ email: request.email });
-    console.log(senduser._doc.email);
-    if (senduser._doc.email) {
+    const updateuser = await UserModel.findByIdAndUpdate(
+      { _id: id },
+      {
+         password: request.password,
+      },
+      {
+        new: true,
       }
-    // return NextResponse.json({message:"User Created",status:"ok",user:senduser});
-  } catch (error: any) {
-    // return NextResponse.json({msg:"error :",err:error});
+    );
+    console.log(updateuser);
+    return NextResponse.json({ message: "success Update User", status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: "can't update", err: error });
   }
 };

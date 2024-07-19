@@ -17,9 +17,9 @@ export const POST = async (req: any) => {
         email: senduser._doc.email,
         password: senduser._doc.password,
       },
-      status:'ok'
+      status:201
     });
   } catch (error) {
-    return NextResponse.json({ message: "err in the post req", err: error });
+    return NextResponse.json({ message: "User already exist ",status:400, err: error });
   }
 };
