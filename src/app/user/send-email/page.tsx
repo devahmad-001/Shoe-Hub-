@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import connectDB from "@/config/connectDB";
 connectDB();
 export default function Reset() {
@@ -16,36 +15,16 @@ export default function Reset() {
       const res = await resetPassword.json();
       console.log(res);
       if (res.status === 200) {
-        await emailjs
-        .send(
-          "service_e5krw4b",
-          "template_tj94p9d",
-          {
-            from_name: "Shoehub",
-            to_name: res.name,
-            reset_link: `http://localhost:3000/user/reset-password/${res.user._id}`,
-          },
-          "bYuVNNuk06JLNEJ2k"
-        )
-        .then((res) => {
-          console.log(res);
-          if (res.status === 200) {
-            alert("Reset Link Sent Successfully");
+        alert("Link Sent successfully");
         window.location.href = "/";
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-        
-      }else{
-      alert("Could not Sent Reset Link");
-      window.location.href = "/";
-      } 
-    }catch(err){
+      } else {
+        alert("Could not Sent Reset Link");
+        window.location.href = "/";
+      }
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
   return (
     <>
       <h1>Enyter Your Email </h1>
@@ -59,3 +38,27 @@ export default function Reset() {
     </>
   );
 }
+
+// email to admin
+
+// await emailjs
+// .send(
+//   "service_e5krw4b",
+//   "template_tj94p9d",
+//   {
+//     from_name: "Shoehub",
+//     to_name: res.name,
+//     reset_link: `http://localhost:3000/user/reset-password/${res.user._id}`,
+//   },
+//   "bYuVNNuk06JLNEJ2k"
+// )
+// .then((res) => {
+//   console.log(res);
+//   if (res.status === 200) {
+//     alert("Reset Link Sent Successfully");
+// window.location.href = "/";
+//   }
+// })
+// .catch((err) => {
+//   console.log(err);
+// });

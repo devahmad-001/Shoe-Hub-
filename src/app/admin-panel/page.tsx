@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 export default function ShowUsers() {
   const [profiles, setprofiles] = useState<any[]>([]);
-  const [update, setUpdate] = useState(false);
   const fetchData = async () => {
     try {
       const response = await fetch("/api/admin/get-all-users", {
@@ -24,12 +23,6 @@ export default function ShowUsers() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    if (update) {
-      fetchData();
-    }
-  }, [update]);
-
   const deleteUser = async (id: any) => {
     console.log(id);
     const response = await fetch(`/api/admin/delete/${id}`, {
@@ -40,7 +33,7 @@ export default function ShowUsers() {
     });
     const data = await response.json();
     console.log("data", data);
-    setUpdate(!update);
+    fetchData();
   };
 
   return (

@@ -14,7 +14,11 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         require:false
-    }
+    },
+    // ph#:{
+    //     require:true,
+    //     type:Number,
+    // }
 })
 
 export const UserModel= mongoose.models.profiles || mongoose.model('profiles',UserSchema)
