@@ -15,8 +15,6 @@
     "@emailjs/browser": "^4.4.1",
     "@types/nodemailer": "^6.4.15",
     "axios": "^1.7.2",
-    "bootstrap": "^5.3.3",
-    "braintree": "^3.24.0",
     "braintree-web-drop-in-react": "^1.2.1",
     "dotenv": "^16.4.5",
     "firebase": "^10.12.3",
@@ -39,3 +37,4 @@
     "typescript": "^5"
   }
 }
+

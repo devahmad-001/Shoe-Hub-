@@ -1,10 +1,13 @@
 "use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 export default function LoginSigup() {
-  let { register, handleSubmit } = useForm();
+  let { register: registerLogin, handleSubmit: handleSubmitLogin } = useForm();
+  let { register: registerSigUp, handleSubmit: handleSubmitSigUp } = useForm();
+  const router = useRouter();
   useEffect(() => {
     const handleFocus = (input: any) => {
       const parentElement = input?.parentElement?.parentElement;
@@ -51,7 +54,7 @@ export default function LoginSigup() {
     const expires = "expires=" + d.toUTCString();
     document.cookie = cName + "=" + cValue + ";" + expires + ";path=/order";
   };
-  const loginUser = async (data: any) => {
+  const userLogin = async (data: any) => {
     try {
       const findUser = await fetch("/api/user/findUserLogin", {
         method: "POST",
@@ -63,12 +66,31 @@ export default function LoginSigup() {
       if (res.status === 200) {
         setCookie("shoehubUser", res.user._id, 7);
         alert("User found");
-        window.location.href = "/order";
+        // window.location.href = "/order";
+        router.push("/order");
       } else if (res.status === 404) {
         alert("User not found");
       }
     } catch (error) {
       console.log("error findUserLogin:", error);
+    }
+  };
+
+  //   on Signup
+
+  const userSignUp = async (data: any) => {
+    const sendData = await fetch("/api/user/create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const res = await sendData.json();
+    console.log("res", res);
+    if (res.status === 201) {
+      alert("User Created Successfully");
+      router.push("/admin-panel");
+    } else if (res.status === 400) {
+      alert(`${res.message}`);
     }
   };
 
@@ -80,7 +102,7 @@ export default function LoginSigup() {
             <div id="form_section" className="form-container">
               {/* Login form */}
               <div className="login-form form-wraper">
-                <form onSubmit={handleSubmit(loginUser)}>
+                <form onSubmit={handleSubmitLogin(userLogin)}>
                   <div className="form-title">
                     <h2>Login</h2>
                   </div>
@@ -88,7 +110,7 @@ export default function LoginSigup() {
                     <div className="box">
                       <span>
                         <input
-                          {...register("email")}
+                          {...registerLogin("email")}
                           placeholder="Email"
                           className="myInput"
                           type="text"
@@ -100,7 +122,7 @@ export default function LoginSigup() {
                     <div className="box">
                       <span>
                         <input
-                          {...register("password")}
+                          {...registerLogin("password")}
                           placeholder="Password"
                           className="myInput"
                           type="password"
@@ -118,7 +140,7 @@ export default function LoginSigup() {
               </div>
               {/* SignUp form */}
               <div className="signUp-form form-wraper">
-                <form>
+                <form onSubmit={handleSubmitSigUp(userSignUp)}>
                   <div className="form-title">
                     <h2>Sign Up</h2>
                   </div>
@@ -126,7 +148,7 @@ export default function LoginSigup() {
                     <div className="box">
                       <span>
                         <input
-                          {...register("name")}
+                          {...registerSigUp("name")}
                           placeholder="Full Name"
                           className="myInput"
                           type="text"
@@ -138,7 +160,7 @@ export default function LoginSigup() {
                     <div className="box">
                       <span>
                         <input
-                          {...register("email")}
+                          {...registerSigUp("email")}
                           placeholder="Email"
                           className="myInput"
                           type="text"
@@ -150,7 +172,7 @@ export default function LoginSigup() {
                     <div className="box">
                       <span>
                         <input
-                          {...register("ph#")}
+                          {...registerSigUp("ph")}
                           placeholder="Mobile No."
                           className="myInput"
                           type="number"
@@ -162,7 +184,7 @@ export default function LoginSigup() {
                     <div className="box">
                       <span>
                         <input
-                          {...register("password")}
+                          {...registerSigUp("password")}
                           placeholder="Password"
                           className="myInput"
                           type="password"

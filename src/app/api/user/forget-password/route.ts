@@ -1,7 +1,7 @@
-import connectDB from "@/config/connectDB";
-import { UserModel } from "@/models/userModel";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import connectDB from "../../../../config/connectDB";
+import { UserModel } from "../../../../models/userModel";
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 587,

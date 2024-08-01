@@ -1,5 +1,5 @@
-import connectDB from "@/config/connectDB";
-import { UserModel } from "@/models/userModel";
+import connectDB from "../../../../config/connectDB";
+import { UserModel } from "../../../../models/userModel";
 import { NextResponse } from "next/server";
 connectDB();
 

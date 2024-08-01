@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import connectDB from "@/config/connectDB";
+import connectDB from "../../../config/connectDB";
 connectDB();
 export default function Reset() {
   let { register, handleSubmit } = useForm();

@@ -1,6 +1,7 @@
-import connectDB from "@/config/connectDB";
-import { UserModel } from "@/models/userModel";
+
 import { NextResponse } from "next/server";
+import connectDB from "../../../../../config/connectDB";
+import { UserModel } from "../../../../../models/userModel";
 export const PATCH = async (req: any, route: any) => {
   await connectDB();
   const request = await req.json();

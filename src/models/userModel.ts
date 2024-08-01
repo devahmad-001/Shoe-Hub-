@@ -15,10 +15,10 @@ const UserSchema = new mongoose.Schema({
         type: String,
         require:false
     },
-    // ph#:{
-    //     require:true,
-    //     type:Number,
-    // }
+    ph:{
+        require:false,
+        type:Number,
+    }
 })
 
 export const UserModel= mongoose.models.profiles || mongoose.model('profiles',UserSchema)
