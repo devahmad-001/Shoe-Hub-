@@ -13,6 +13,8 @@
     "@clerk/nextjs": "^5.2.2",
     "@clerk/themes": "^2.1.10",
     "@emailjs/browser": "^4.4.1",
+    "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/splide": "^4.1.4",
     "@types/nodemailer": "^6.4.15",
     "axios": "^1.7.2",
     "braintree-web-drop-in-react": "^1.2.1",
@@ -37,4 +39,3 @@
     "typescript": "^5"
   }
 }
-

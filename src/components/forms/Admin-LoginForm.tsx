@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Login() {
+export default function AdminLogin() {
   return (
     <>
       <div className="container">
@@ -29,12 +29,8 @@ export default function Login() {
               </button>
             </form>
             <div className="social-login">
-              <h3>
-                Admin
-              </h3>
-              <h3>
-                Control Panel
-              </h3>
+              <h3>Admin</h3>
+              <h3>Control Panel</h3>
               <div className="social-icons">
                 <a
                   href="https://instagram.com/isikabatay06"

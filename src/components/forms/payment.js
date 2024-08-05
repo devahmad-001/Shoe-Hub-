@@ -3,7 +3,7 @@ import DropIn from "braintree-web-drop-in-react";
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-export default function Requests() {
+export default function Payment() {
   const [values, setValues] = useState({
     clientToken: null,
     instance: null,

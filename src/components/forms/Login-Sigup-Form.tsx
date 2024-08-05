@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-export default function LoginSigup() {
+export default function UserLoginSigup() {
   let { register: registerLogin, handleSubmit: handleSubmitLogin } = useForm();
   let { register: registerSigUp, handleSubmit: handleSubmitSigUp } = useForm();
   const router = useRouter();
