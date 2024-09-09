@@ -1,3 +1,8 @@
+/* styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ////////////////////////// Amnin Login Form //////////////////// */
 
 @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
@@ -429,7 +434,7 @@ form {
 .section {
   min-height: 800px;
 }
-/* //////////////////////////////HomeImg/////////////////// */
+/* //////////////////////////////HomeImg////////////////////////////// */
 
 .homeContainer {
   display: flex;
@@ -455,12 +460,11 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 39%;
+  width: 37%;
   height: 24%;
   color: white;
   flex-direction: column;
 }
-
 .homeHeading {
   display: flex;
   flex-direction: column;
@@ -475,10 +479,10 @@ form {
   font-family: sans-serif;
   margin-bottom: 8px;
 }
-.homeBtnBox  {
-  margin-top: 20px;
+.homeBtnBox {
+  margin-top: 23px;
   align-self: flex-end;
-  padding: 13px 13px;
+  padding: 9px 13px;
   width: 113px;
   height: 40px;
   font-size: 14px;
@@ -490,11 +494,23 @@ form {
   border-radius: 2px;
   cursor: pointer;
 }
+
+/*  */
 .categoriesCotainer {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  padding: 30px 50px;
+  row-gap: 23px;
+}
+.categoriesCotainer > h2 {
+  font-size: 27px;
+  font-family: sans-serif;
+  color: white;
+}
+.categoriesBox {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
   flex-wrap: wrap;
   row-gap: 20px;
 }
@@ -523,8 +539,6 @@ form {
   font-size: 19.5px;
   padding-inline: 6px;
 }
-
-
 .categoreyBtnBox {
   width: 100%;
   display: flex;
@@ -537,19 +551,18 @@ form {
   height: 45px;
   font-size: 13px;
   background: transparent;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
   border: 1px solid white;
   color: white;
   font-family: sans-serif;
   font-weight: 600;
 }
-.categoreyBtnBox > button:hover{
+.categoreyBtnBox > button:hover {
   background-color: white;
   color: black;
 }
-
-.overlayBackground{
+.overlayBackground {
   position: absolute;
   top: 0;
   left: 0;
@@ -557,18 +570,45 @@ form {
   height: 100%;
   background: rgba(0, 0, 0, 0.114);
 }
-.overlayBackground:hover{
+.overlayBackground:hover {
   background: none;
 }
+
 @media (max-width: 768px) {
   .homeShoeImg {
     height: 50.5vh;
     object-fit: cover;
   }
+  .homeHeading > p {
+    text-align: end;
+    font-size: 8px;
+  }
   .homeHeading > h1 {
-    font-size: 20px;
+    font-size: 14px;
     font-family: sans-serif;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+  }
+  .homeBtnBox {
+    margin-top: 8px;
+    width: 52px;
+    height: 16px;
+    font-size: 6px;
+    margin-top: 23px;
+    align-self: flex-end;
+    padding: 5px 5px;
+    font-family: revert;
+    background: white;
+    font-weight: bolder;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .homeTitleBox {
+    width: 45%;
+  }
+  .categoriesCotainer > h2 {
+    text-align: center;
   }
   .categoriesCotainer {
     padding: 10px;
@@ -579,9 +619,30 @@ form {
     height: 31.6vh;
     object-fit: cover;
   }
-  .categoriesCotainer {
-    padding: 10px;
+  .homeHeading > p {
+    text-align: end;
+    font-size: 5.5px;
+  }
+  .homeHeading > h1 {
+    font-size: 9px;
+    font-family: sans-serif;
+    margin-bottom: 3px;
+  }
+  .homeBtnBox {
+    margin-top: 8px;
+    align-self: flex-end;
+    width: 52px;
+    height: 16px;
+    font-size: 6px;
+    font-family: revert;
+    background: white;
+    font-weight: bolder;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .homeTitleBox {
+    width: 28%;
   }
 }
-
-

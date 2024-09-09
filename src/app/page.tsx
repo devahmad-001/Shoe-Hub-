@@ -1,11 +1,13 @@
 "use client";
 
-import HomePage from "../components/sharedComp/HomePage";
+import UserLoginSigup from "../components/forms/Login-Sigup-Form";
+import HomePage from "../components/HomePage/HomePage";
 
 export default function Home() {
   return (
     <>
-     <HomePage/>
+      <UserLoginSigup/>
+      {/* <HomePage/> */}
     </>
   );
 }

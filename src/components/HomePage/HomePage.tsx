@@ -7,7 +7,7 @@ export default function HomePage() {
     <>
       {/* HomeImg */}
 
-      {/* <div className="homeContainer">
+      <div className="homeContainer ">
         <div className="homeImgbox">
           <img className="homeShoeImg" src="/imgs/home/adidas.jpg" />
           <div className="homeTitleBox">
@@ -18,37 +18,37 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Categorey Box */}
-
-      {/* <div className="categoriesCotainer">
-        {Categories.map((data, index) => {
-          return (
-            <>
-              <div className="categoreyImgbox" key={index}>
-                <Image
-                  width={297}
-                  height={428}
-                  alt=""
-                  src={data.img}
-                  title=""
-                />
-                <div className="overlayBackground">
+      <div className="categoriesCotainer">
+        <h2>World&apos;s Largest Bootroom</h2>
+        <div className="categoriesBox ">
+          {Categories.map((data, index) => {
+            return (
+              <>
+                <div className="categoreyImgbox" key={index}>
+                  <Image
+                    width={297}
+                    height={428}
+                    alt=""
+                    src={data.img}
+                    title=""
+                  />
+                  <div className="overlayBackground"></div>
+                  <div className="categoreyTitlebox">
+                    <h2>{data.title}</h2>
+                    <div className="categoreyBtnBox">
+                      <button>Show Pack</button>
+                      <button>{data.btnText}</button>
+                    </div>
+                  </div>
                 </div>
-                <div className="categoreyTitlebox">
-                  <h2>{data.title}</h2>
-                <div className="categoreyBtnBox">
-                 <button>Show Pack</button>
-                 <button>{data.btnText}</button>
-                </div>
-                </div>
-              </div>
-            </>
-          );
-        })}
-      </div> */}
-
+              </>
+            );
+          })}
+        </div>
+      </div>
       {/* Splide */}
 
       <Splide aria-label="My Favorite Images">
@@ -60,8 +60,10 @@ export default function HomePage() {
                 <div className="homeTitleBox">
                   <div className="homeHeading">
                     <h1>{data.title}</h1>
-                    <p>Fresh Look for the 24/7 season</p>
-                    <button className="homeBtnBox">Shop Now</button>
+                    <p>{data.deskcription}</p>
+                    {data.btnText && (
+                      <button className="homeBtnBox">{data.btnText}</button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -69,6 +71,7 @@ export default function HomePage() {
           );
         })}
       </Splide>
+      <h1 className=""></h1>
     </>
   );
 }
